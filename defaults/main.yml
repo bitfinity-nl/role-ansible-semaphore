@@ -1,9 +1,20 @@
 ---
+# Title: role-ansible-semaphore
+#
+# Author: Bitfinity / L. Rutten
+# Owner: Bitfinity / L. Rutten
+#
+# File: defaults/main.yml
+#
+# Description:
+#  This role contains the tasks to install a
+#  Ansible Semaphore server. 
 
-DOCK_MYSQL_PASS
+# -- Docker MySQL configuration --
+DOCK_MYSQL_PASS          : 'semaphore'
 
-
-DOCK_SEMA_ADMIN_USER
-DOCK_SEMA_ADMIN_PASS
-DOCK_SEMA_ADMIN_EMAIL
-DOCK_SEMA_ACCESS_KEY_ENC
+# -- Docker Ansible Semaphore configuration --
+DOCK_SEMA_ADMIN_USER     : 'admin'
+DOCK_SEMA_ADMIN_PASS     : 'admmin'
+DOCK_SEMA_ADMIN_EMAIL    : 'admin@example.com'
+DOCK_SEMA_ACCESS_KEY_ENC : 'gs72mPntFATGJs9qK0pQ0rKtfidlexiMjYCH9gWKhTU'
