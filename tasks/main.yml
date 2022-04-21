@@ -21,7 +21,7 @@
     name:  ansiblesemaphore/semaphore:latest
     source: pull
 
-- name: "Create directory for local vaultwarden /opt/docker/ansiblesemaphore/data/"
+- name: "Create directory for local ansible-semaphore /opt/docker/ansiblesemaphore/data/"
   file:
     path: /opt/docker/ansiblesemaphore/data/
     state: directory
@@ -31,7 +31,7 @@
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
   with_items:
-    - { src: 'docker-compose.yml.j2', dest: '/opt/semaphore-docker/docker-compose.yml' }
+    - { src: 'docker-compose.yml.j2', dest: ' /opt/docker/ansiblesemaphore/data/docker-compose.yml' }
 
 #- name: "Docker Compose"
 #  community.docker.docker_compose:
