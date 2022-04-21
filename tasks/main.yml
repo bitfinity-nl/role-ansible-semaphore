@@ -16,6 +16,10 @@
     - docker.io
     - python3-docker
 
+- name: Install docker-compose python package
+  pip:
+    name: docker-compose
+    
 - name: "Pull Docker image vaultwarden"
   docker_image:
     name:  ansiblesemaphore/semaphore:latest
