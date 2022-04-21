@@ -35,5 +35,5 @@
 
 - name: "Docker Compose UP"
   community.docker.docker_compose:
-    project_src: /opt/docker/ansiblesemaphore/
+    project_src: /opt/docker/ansiblesemaphore/docker-compose.yml
     build: no
