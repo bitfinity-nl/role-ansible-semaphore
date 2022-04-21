@@ -1,1 +1,38 @@
 ---
+# Title: role-ansible-semaphore
+#
+# Author: Bitfinity / L. Rutten
+# Owner: Bitfinity / L. Rutten
+#
+# File: tasks/main.yml
+#
+# Description:
+#  This role contains the tasks to install a
+#  Ansible Semaphore server. 
+
+- name: "Install APT packages (dependencies)"
+  apt:
+    pkg:
+    - docker.io
+    - python3-docker
+
+- name: "Pull Docker image vaultwarden"
+  docker_image:
+    name:  ansiblesemaphore/semaphore:latest
+    source: pull
+
+- name: "Create directory for local vaultwarden /opt/docker/ansiblesemaphore/data/"
+  file:
+    path: /opt/docker/ansiblesemaphore/data/
+    state: directory
+
+- name: "Transfer template(s)"
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: 'docker-compose.yml.j2', dest: '/opt/semaphore-docker/docker-compose.yml' }
+
+#- name: "Docker Compose"
+#  community.docker.docker_compose:
+
