@@ -43,7 +43,7 @@
 
 - name: "Put encryption key in variable"
   set_fact:
-    semaphore_encryption_key: "{{ lookup('file','/tmp/invoiceninja_api_key') }}"    
+    semaphore_encryption_key: "{{ lookup('file','/opt/docker/ansiblesemaphore/semaphore_encryption_key') }}"    
   
 - name: "Transfer template(s)"
   template:
