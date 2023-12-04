@@ -42,9 +42,9 @@
   raw: "head -c32 /dev/urandom | base64 > /opt/docker/ansiblesemaphore/semaphore_encryption_key"
   when: semaphore_encryption_key.stat.exists == False
 
-#- name: "Put API_KEY in variable"
-#  set_fact:
-#    invoiceninja_api_key: "{{ lookup('file','/tmp/invoiceninja_api_key') }}"    
+- name: "Put encryption key in variable"
+  set_fact:
+    semaphore_encryption_key: "{{ lookup('file','/tmp/invoiceninja_api_key') }}"    
 
 #--
   
