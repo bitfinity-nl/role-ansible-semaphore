@@ -2,6 +2,7 @@
 volumes:
   semaphore-mysql:
     driver: local
+
 services:
   mysql:
     image: mysql:8.0
@@ -10,7 +11,7 @@ services:
       - semaphore-mysql:/var/lib/mysql
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
-      - MYSQL_DATABASE-semaphore
+      - MYSQL_DATABASE=semaphore
       - MYSQL_USER=semaphore
       - MYSQL_PASSWORD={{ DOCK_MYSQL_PASS }}
     restart: unless-stopped
