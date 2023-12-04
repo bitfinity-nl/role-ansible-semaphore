@@ -32,16 +32,15 @@
     path: /opt/docker/ansiblesemaphore/data/
     state: directory
 
-
 #---
-- name: "Check if /opt/invoiceninja_api_key exist"
+- name: "Check if /opt/docker/ansiblesemaphore/.semaphore_encryption_key exist"
   stat:
-    path: "/opt/invoiceninja_api_key"
-  register: invoiceninja_api_key_file
+    path: "/opt/docker/ansiblesemaphore/semaphore_encryption_key"
+  register: semaphore_encryption_key
 
-#- name: "Generate API_KEY"
-#  raw: "/opt/invoiceninja_api_key.sh"
-#  when: invoiceninja_api_key_file.stat.exists == False
+- name: "Generate ansible semaphore encryption key"
+  raw: "head -c32 /dev/urandom | base64 > /opt/docker/ansiblesemaphore/semaphore_encryption_key"
+  when: semaphore_encryption_key.stat.exists == False
 
 #- name: "Put API_KEY in variable"
 #  set_fact:
