@@ -32,7 +32,6 @@
     path: /opt/docker/ansiblesemaphore/data/
     state: directory
 
-#---
 - name: "Check if /opt/docker/ansiblesemaphore/.semaphore_encryption_key exist"
   stat:
     path: "/opt/docker/ansiblesemaphore/semaphore_encryption_key"
@@ -45,8 +44,6 @@
 - name: "Put encryption key in variable"
   set_fact:
     semaphore_encryption_key: "{{ lookup('file','/tmp/invoiceninja_api_key') }}"    
-
-#--
   
 - name: "Transfer template(s)"
   template:
