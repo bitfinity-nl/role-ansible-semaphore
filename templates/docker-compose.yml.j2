@@ -17,7 +17,7 @@ services:
   semaphore:
     container_name: ansiblesemaphore
     image: semaphoreui/semaphore:latest
-    user: "${UID}:${GID}"   
+    #user: "${UID}:${GID}"   
     ports:
       - 3000:3000
     environment:
