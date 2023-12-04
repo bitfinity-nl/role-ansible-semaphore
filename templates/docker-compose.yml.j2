@@ -45,7 +45,7 @@ services:
     volumes:
       - ./inventory/:/inventory:ro
       - ./authorized-keys/:/authorized-keys:ro
-      - ./config/:/etc/semaphore:rw
+      # - ./config/:/etc/semaphore:rw
     restart: unless-stopped      
     depends_on:
       - mysql
