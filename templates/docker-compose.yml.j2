@@ -40,9 +40,9 @@ services:
       SEMAPHORE_LDAP_PASSWORD: '{{ DOCK_SEMA_LDAP_PASSWORD }}'
       SEMAPHORE_LDAP_DN_SEARCH: '{{ DOCK_SEMA_LDAP_DN_SEARCH }}'
       SEMAPHORE_LDAP_SEARCH_FILTER: "{{ DOCK_SEMA_LDAP_SEARCH_FILTER }}"
-   volumes:
-      - ./inventory/:/inventory:ro
-      - ./authorized-keys/:/authorized-keys:ro
-      - ./config/:/etc/semaphore:rw
+   #volumes:
+   #   - ./inventory/:/inventory:ro
+    #  - ./authorized-keys/:/authorized-keys:ro
+     # - ./config/:/etc/semaphore:rw
     depends_on:
       - mysql
