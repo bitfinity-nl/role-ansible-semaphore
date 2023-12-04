@@ -15,5 +15,5 @@ DOCK_MYSQL_PASS          : 'semaphore'
 
 # -- Docker Ansible Semaphore configuration --
 DOCK_SEMA_ADMIN_USER     : 'admin'
-DOCK_SEMA_ADMIN_PASS     : 'admmin'
+DOCK_SEMA_ADMIN_PASS     : 'admin'
 DOCK_SEMA_ADMIN_EMAIL    : 'admin@example.com'
