@@ -17,11 +17,12 @@
     - python3-docker
     - python3-pip
 
+
 - name: Install docker-compose python package
   pip:
     name: docker-compose
     
-- name: "Pull Docker image vaultwarden"
+- name: "Pull Docker image Semaphore"
   docker_image:
     name:  ansiblesemaphore/semaphore:latest
     source: pull
@@ -31,6 +32,23 @@
     path: /opt/docker/ansiblesemaphore/data/
     state: directory
 
+
+#---
+- name: "Check if /opt/invoiceninja_api_key exist"
+  stat:
+    path: "/opt/invoiceninja_api_key"
+  register: invoiceninja_api_key_file
+
+#- name: "Generate API_KEY"
+#  raw: "/opt/invoiceninja_api_key.sh"
+#  when: invoiceninja_api_key_file.stat.exists == False
+
+#- name: "Put API_KEY in variable"
+#  set_fact:
+#    invoiceninja_api_key: "{{ lookup('file','/tmp/invoiceninja_api_key') }}"    
+
+#--
+  
 - name: "Transfer template(s)"
   template:
     src: "{{ item.src }}"
