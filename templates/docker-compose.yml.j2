@@ -18,16 +18,17 @@ services:
     environment:
       SEMAPHORE_DB_USER: semaphore
       SEMAPHORE_DB_PASS: semaphore
-      SEMAPHORE_DB_HOST: mysql
-      SEMAPHORE_DB_PORT: 3306
-      SEMAPHORE_DB: semaphore
+      SEMAPHORE_DB_HOST: mysql # for postgres, change to: postgres
+      SEMAPHORE_DB_PORT: 3306 # change to 5432 for postgres
+      SEMAPHORE_DB_DIALECT: mysql # for postgres, change to: postgres
+      SEMAPHORE_DB: semaphore 
       SEMAPHORE_PLAYBOOK_PATH: /tmp/semaphore/
       SEMAPHORE_ADMIN_PASSWORD: {{ DOCK_SEMA_ADMIN_PASS }}
       SEMAPHORE_ADMIN_NAME: {{ DOCK_SEMA_ADMIN_USER }}
       SEMAPHORE_ADMIN_EMAIL: {{ DOCK_SEMA_ADMIN_EMAIL }}
       SEMAPHORE_ADMIN: {{ DOCK_SEMA_ADMIN_USER }}
       SEMAPHORE_ACCESS_KEY_ENCRYPTION: {{ semaphore_encryption_key }}
-      SEMAPHORE_LDAP_ACTIVATED: '{{ DOCK_SEMA_LDAP_ACTIVATED }}'
+      SEMAPHORE_LDAP_ACTIVATED: '{{ DOCK_SEMA_LDAP_ACTIVATED }}' # if you wish to use ldap, set to: 'yes' 
       SEMAPHORE_LDAP_HOST: '{{ DOCK_SEMA_LDAP_HOST }}'
       SEMAPHORE_LDAP_PORT: '{{ DOCK_SEMA_LDAP_PORT }}'
       SEMAPHORE_LDAP_NEEDTLS: '{{ DOCK_SEMA_NEED_TLS }}'
@@ -37,3 +38,5 @@ services:
       SEMAPHORE_LDAP_SEARCH_FILTER: "{{ DOCK_SEMA_LDAP_SEARCH_FILTER }}"
     depends_on:
       - mysql
+volumes:
+  semaphore-mysql: # to use postgres, switch to: semaphore-postgres
