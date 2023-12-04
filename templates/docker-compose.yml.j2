@@ -28,6 +28,6 @@ services:
       SEMAPHORE_ADMIN_NAME: admin
       SEMAPHORE_ADMIN_EMAIL: {{ DOCK_SEMA_ADMIN_EMAIL }}
       SEMAPHORE_ADMIN: {{ DOCK_SEMA_ADMIN_USER }}
-      SEMAPHORE_ACCESS_KEY_ENCRYPTION: {{ DOCK_SEMA_ACCESS_KEY_ENC }}
+      SEMAPHORE_ACCESS_KEY_ENCRYPTION: {{ semaphore_encryption_key }}
     depends_on:
       - mysql
