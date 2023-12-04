@@ -4,18 +4,19 @@ volumes:
     driver: local
 services:
   mysql:
-    ports:
-      - 3306:3306
     image: mysql:8.0
     hostname: mysql
+    volumes:
+      - semaphore-mysql:/var/lib/mysql
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_DATABASE-semaphore
       - MYSQL_USER=semaphore
       - MYSQL_PASSWORD={{ DOCK_MYSQL_PASS }}
+    restart: unless-stopped
   semaphore:
     container_name: ansiblesemaphore
-    image: ansiblesemaphore/semaphore:latest
+    image: semaphoreui/semaphore:latest
     user: "${UID}:${GID}"   
     ports:
       - 3000:3000
