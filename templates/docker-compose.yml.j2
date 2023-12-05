@@ -1,4 +1,7 @@
 ---
+volumes:
+  semaphore-mysql:
+    driver: local
 services:
   mysql:
     restart: unless-stopped
