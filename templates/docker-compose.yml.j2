@@ -1,7 +1,4 @@
 ---
-volumes:
-  semaphore-mysql:
-
 services:
   mysql:
     restart: unless-stopped
@@ -41,8 +38,9 @@ services:
       SEMAPHORE_LDAP_DN_SEARCH: '{{ DOCK_SEMA_LDAP_DN_SEARCH }}'
       SEMAPHORE_LDAP_SEARCH_FILTER: "{{ DOCK_SEMA_LDAP_SEARCH_FILTER }}"
    volumes:
-      - ./inventory/:/inventory
-      - ./authorized-keys/:/authorized-keys
-      - ./config/:/etc/semaphore
+      - ./etc/semaphore:/etc/semaphore
+      - ./var/lib/semaphore:/var/lib/semaphore       
    depends_on:
       - mysql
+volumes:
+  semaphore-mysql: # to use postgres, switch to: semaphore-postgres
