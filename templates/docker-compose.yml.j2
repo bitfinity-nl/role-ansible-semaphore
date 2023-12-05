@@ -39,5 +39,3 @@ services:
       SEMAPHORE_LDAP_SEARCH_FILTER: "{{ DOCK_SEMA_LDAP_SEARCH_FILTER }}"    
    depends_on:
       - mysql
-volumes:
-  semaphore-mysql: # to use postgres, switch to: semaphore-postgres
