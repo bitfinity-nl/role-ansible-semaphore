@@ -21,13 +21,10 @@
   pip:
     name: docker-compose
     
-- name: "Pull Docker image Semaphore"
-  docker_image:
-    name:  ansiblesemaphore/semaphore:latest
-    source: pull
-  become: true
-  become_method: su
-  become_user: ansible
+#- name: "Pull Docker image Semaphore"
+#  docker_image:
+#    name:  ansiblesemaphore/semaphore:latest
+#    source: pull
   
 - name: "Create directory for local ansible-semaphore /opt/docker/ansiblesemaphore/data/"
   ansible.builtin.file:
