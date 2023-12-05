@@ -15,6 +15,4 @@
     
 - name: "Include tasks/02-ansible-semaphore.yml"
   import_tasks: tasks/02-ansible-semaphore.yml
-  become: true
-  become_method: su
-  become_user: ansible
+
