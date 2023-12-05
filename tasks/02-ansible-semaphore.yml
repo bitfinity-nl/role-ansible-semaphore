@@ -39,24 +39,15 @@
     - { path: /opt/docker/ansiblesemaphore/authorized-keys, owner: 'ansible', group: 'ansible', mode: '0777' }
     - { path: /opt/docker/ansiblesemaphore/config, owner: 'ansible', group: 'ansible', mode: '0777' }
     - { path: /opt/docker/ansiblesemaphore/inventory, owner: 'ansible', group: 'ansible', mode: '0777' }
-  become: true
-  become_method: su
-  become_user: ansible
   
 - name: "Check if /opt/docker/ansiblesemaphore/.semaphore_encryption_key exist"
   stat:
     path: "/opt/docker/ansiblesemaphore/semaphore_encryption_key"
   register: semaphore_encryption_key
-  become: true
-  become_method: su
-  become_user: ansible
   
 - name: "Generate ansible semaphore encryption key"
   raw: "head -c32 /dev/urandom | base64 > /opt/docker/ansiblesemaphore/semaphore_encryption_key"
   when: semaphore_encryption_key.stat.exists == False
-  become: true
-  become_method: su
-  become_user: ansible
 
 - name: "Set correct permissions on /opt/docker/ansiblesemaphore/semaphore_encryption_key"
   ansible.builtin.file:
@@ -64,16 +55,10 @@
     owner: ansible
     group: ansible
     mode: '0600'
-  become: true
-  become_method: su
-  become_user: ansible
   
 - name: "Put encryption key in variable"
   set_fact:
     semaphore_encryption_key: "{{ lookup('file','/opt/docker/ansiblesemaphore/semaphore_encryption_key') }}"    
-  become: true
-  become_method: su
-  become_user: ansible
   
 - name: "Transfer template(s)"
   template:
@@ -81,9 +66,6 @@
     dest: "{{ item.dest }}"
   with_items:
     - { src: 'docker-compose.yml.j2', dest: '/opt/docker/ansiblesemaphore/docker-compose.yml' }
-  become: true
-  become_method: su
-  become_user: ansible
   
 - name: "Docker Compose UP"
   docker_compose:
