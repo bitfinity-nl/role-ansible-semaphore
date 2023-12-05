@@ -14,5 +14,5 @@
   include_tasks: tasks/01-ansible.yml
     
 - name: "Include tasks/02-ansible-semaphore.yml"
-  import_tasks: tasks/02-ansible-semaphore.yml
+  include_tasks: tasks/02-ansible-semaphore.yml
 
