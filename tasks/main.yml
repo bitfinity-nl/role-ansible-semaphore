@@ -17,7 +17,6 @@
     - python3-docker
     - python3-pip
 
-
 - name: Install docker-compose python package
   pip:
     name: docker-compose
@@ -28,10 +27,19 @@
     source: pull
 
 - name: "Create directory for local ansible-semaphore /opt/docker/ansiblesemaphore/data/"
-  file:
-    path: /opt/docker/ansiblesemaphore/data/
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.mode }}"
     state: directory
-
+  loop:
+    - { path: /opt/docker/ansiblesemaphore/, owner: 'root', group: 'root', mode: '0755' }
+    - { path: /opt/docker/ansiblesemaphore/data, owner: 'root', group: 'root', mode: '0777' }
+    - { path: /opt/docker/ansiblesemaphore/authorized-keys, owner: 'root', group: 'root', mode: '0777' }
+    - { path: /opt/docker/ansiblesemaphore/config, owner: 'root', group: 'root', mode: '0777' }
+    - { path: /opt/docker/ansiblesemaphore/inventory, owner: 'root', group: 'root', mode: '0777' }
+    
 - name: "Check if /opt/docker/ansiblesemaphore/.semaphore_encryption_key exist"
   stat:
     path: "/opt/docker/ansiblesemaphore/semaphore_encryption_key"
@@ -40,6 +48,13 @@
 - name: "Generate ansible semaphore encryption key"
   raw: "head -c32 /dev/urandom | base64 > /opt/docker/ansiblesemaphore/semaphore_encryption_key"
   when: semaphore_encryption_key.stat.exists == False
+
+- name: "Set correct permissions on /opt/docker/ansiblesemaphore/semaphore_encryption_key"
+  ansible.builtin.file:
+    path: "/opt/docker/ansiblesemaphore/semaphore_encryption_key"
+    owner: root
+    group: root
+    mode: '0600'
 
 - name: "Put encryption key in variable"
   set_fact:
