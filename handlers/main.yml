@@ -1,0 +1,25 @@
+---
+# Title: Ansible Semaphore
+#
+# Author: Bitfinity-NL / L. Rutten
+# Owner: Bitfinity-NL / L. Rutten
+#
+# File: handlers/main.yml
+#
+# Description:
+#   Handlers file for restarting or reloading services.
+#
+- name: "restart_apache2"
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+    name: apache2
+
+- name: "reload_apache2"
+  systemd:
+    daemon_reload: yes
+    name: apache2
+
+#- name: "restart_docker_bookstack"
+#  command: docker restart bookstack
