@@ -25,3 +25,9 @@ DOCK_SEMA_LDAP_DN_BIND       : 'id=bind_user,cn=users,cn=accounts,dc=local,dc=sh
 DOCK_SEMA_LDAP_PASSWORD      : 'ldap_bind_account_password'
 DOCK_SEMA_LDAP_DN_SEARCH     : 'dc=local,dc=example,dc=com'
 DOCK_SEMA_LDAP_SEARCH_FILTER : '(\u0026(uid=%s)(memberOf=cn=ipausers,cn=groups,cn=accounts,dc=local,dc=example,dc=com))'
+
+# -- Apache2 Semaphore configuration --
+apache2_servername           : ''
+apache2_serveradmin          : ''
+apache2_cert_file            : ''
+apache2_cert_keyfile         : ''
