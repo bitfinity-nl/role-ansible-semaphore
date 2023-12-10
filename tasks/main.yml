@@ -16,3 +16,5 @@
 - name: "Include tasks/02-ansible-semaphore.yml"
   include_tasks: tasks/02-ansible-semaphore.yml
 
+- name: "Include tasks/02-apache2.yml"
+  include_tasks: tasks/03-apache2.yml
