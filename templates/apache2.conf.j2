@@ -19,8 +19,8 @@
   SSLCertificateFile	{{ apache2_cert_file }}
   SSLCertificateKeyFile {{ apache2_cert_keyfile }}
 
-  ProxyPass / http://localhost:6875/
-  ProxyPassReverse / http://localhost:6875/
+  ProxyPass / http://localhost:3000/
+  ProxyPassReverse / http://localhost:3000/
 
   ErrorLog ${APACHE_LOG_DIR}/error.log
   CustomLog ${APACHE_LOG_DIR}/access.log combined
