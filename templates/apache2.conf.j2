@@ -1,0 +1,39 @@
+<VirtualHost *:80>
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+</VirtualHost>
+
+<IfModule mod_ssl.c>
+
+<VirtualHost *:443>
+
+  ServerName {{ apache2_servername }}
+  ServerAdmin {{ apache2_serveradmin }}
+
+  ServerSignature Off
+  ProxyPreserveHost On
+  SSLEngine On
+  SSLCertificateFile	{{ apache2_cert_file }}
+  SSLCertificateKeyFile {{ apache2_cert_keyfile }}
+
+  ProxyPass / http://localhost:6875/
+  ProxyPassReverse / http://localhost:6875/
+
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  #<location /admin>
+     # Works only when accessing direct ip
+  #   <IfModule authz_host_module>
+  #      <RequireAny>
+  #        Require ip apache2_allow_from_dir_admin 
+  #      </RequireAny>
+  #  </IfModule>
+  #</location>
+  
+</VirtualHost>
+
+</IfModule>
