@@ -10,6 +10,8 @@
 #   This taskfile contains the tasks
 #   configuring the local reverse proxy.
 #
+
+
 - name: "Install APT packages"
   ansible.builtin.apt:
     pkg:
@@ -24,6 +26,15 @@
     - proxy_http
     - rewrite
     - ssl
+
+- name: "Recursively change ownership of a directory"
+  ansible.builtin.file:
+    path: /var/www/html/downloads/
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+    mode: 0775
 
 - name: "Transfer templates"
   template:
