@@ -20,6 +20,7 @@ services:
       - 3000:3000
     image: semaphoreui/semaphore:latest
     environment:
+      SEMAPHORE_WEB_HOST: 'http://localhost/semui'
       SEMAPHORE_DB_USER: 'semaphore'
       SEMAPHORE_DB_PASS: 'semaphore'
       SEMAPHORE_DB_HOST: 'mysql' # for postgres, change to: postgres
