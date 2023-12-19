@@ -25,16 +25,16 @@
   ReWriteEngine on
 
   # -- Download folder --
-  ProxyPassMatch ^/downloads !
+  #ProxyPassMatch ^/downloads !
 
-  Alias "/downloads" "/var/www/html/downloads"
+  #Alias "/downloads" "/var/www/html/downloads"
 
-  <Directory "/var/www/html/downloads">
-    Options Indexes Multiviews
-    AllowOverride All
-    Order allow,deny
-    Allow from all
-  </Directory>
+  #<Directory "/var/www/html/downloads">
+  #  Options Indexes Multiviews
+  #  AllowOverride All
+  #  Order allow,deny
+  #  Allow from all
+  #</Directory>
 
   # -- Ansible Semaphore UI --
   ProxyPass / http://localhost:3000/
