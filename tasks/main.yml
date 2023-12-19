@@ -10,11 +10,11 @@
 #  This role contains the tasks to install a
 #  Ansible Semaphore server. 
 #
-- name: "Include tasks/01-ansible.yml"
-  include_tasks: tasks/01-ansible.yml
+#- name: "Include tasks/01-ansible.yml"
+#  include_tasks: tasks/01-ansible.yml
     
 - name: "Include tasks/02-ansible-semaphore.yml"
   include_tasks: tasks/02-ansible-semaphore.yml
 
-- name: "Include tasks/02-apache2.yml"
-  include_tasks: tasks/03-apache2.yml
+#- name: "Include tasks/02-apache2.yml"
+#  include_tasks: tasks/03-apache2.yml
