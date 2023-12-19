@@ -7,7 +7,7 @@
 #
 # Description:
 #   Taskfile for configuring Ansible server.
-
+#
 - name: "Create Ansible security group"
   ansible.builtin.group:
     name: ansible
