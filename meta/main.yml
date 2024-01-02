@@ -1,6 +1,8 @@
 ---
+
 dependencies:
   - role: "docker.role-docker-engine"
     src: https://github.com/bitfinity-nl/role-docker-engine.git
     version: main
     scm: git
+    when: ansible_semaphore_install
