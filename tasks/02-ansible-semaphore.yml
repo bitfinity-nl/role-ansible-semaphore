@@ -13,13 +13,12 @@
 - name: "Install APT packages (dependencies)"
   apt:
     pkg:
-#    - docker.io
-    - python3-docker
-    - python3-pip
+#    - python3-docker
+#    - python3-pip
 
-- name: Install docker-compose python package
-  pip:
-    name: docker-compose
+#- name: Install docker-compose python package
+#  pip:
+#    name: docker-compose
     
 #- name: "Pull Docker image Semaphore"
 #  docker_image:
