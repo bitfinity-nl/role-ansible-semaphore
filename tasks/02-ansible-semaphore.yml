@@ -13,7 +13,7 @@
 - name: "Install APT packages (dependencies)"
   apt:
     pkg:
-    - docker.io
+#    - docker.io
     - python3-docker
     - python3-pip
 
