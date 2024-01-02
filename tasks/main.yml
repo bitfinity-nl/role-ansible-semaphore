@@ -20,4 +20,4 @@
 
 - name: "Include tasks/02-apache2.yml"
   include_tasks: tasks/03-apache2.yml
-  when: SEMA_SETUP_ANSIBLE_CORE == 'true' 
+  when: SEMA_SETUP_ANSIBLE_APACHE == 'true' 
