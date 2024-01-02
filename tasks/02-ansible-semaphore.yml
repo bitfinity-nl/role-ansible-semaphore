@@ -70,3 +70,8 @@
   community.docker.docker_compose:
     project_src: /opt/docker/ansiblesemaphore/
     # build: no
+
+- name: "Docker Compose UP"
+  ansible.builtin.command: docker compose up -d
+  args:
+    chdir: /opt/docker/ansiblesemaphore/
