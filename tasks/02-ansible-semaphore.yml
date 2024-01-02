@@ -66,9 +66,9 @@
   with_items:
     - { src: 'docker-compose.yml.j2', dest: '/opt/docker/ansiblesemaphore/docker-compose.yml' }
   
-- name: "Docker Compose UP"
-  community.docker.docker_compose:
-    project_src: /opt/docker/ansiblesemaphore/
+#- name: "Docker Compose UP"
+#  community.docker.docker_compose:
+#    project_src: /opt/docker/ansiblesemaphore/
     # build: no
 
 - name: "Docker Compose UP"
