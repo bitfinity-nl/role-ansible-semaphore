@@ -9,9 +9,14 @@
 # Description:
 #  This role contains the tasks to install a
 #  Ansible Semaphore server. 
+#
+# -- Docker tasks --
+SEMA_SETUP_ANSIBLE_CORE      : 'false'
+SEMA_SETUP_ANSIBLE_SEMAPHORE : 'true'
+SEMA_SETUP_ANSIBLE_APACHE    : 'false'
 
 # -- Docker MySQL configuration --
-DOCK_MYSQL_PASS          : 'semaphore'
+DOCK_MYSQL_PASS              : 'semaphore'
 
 # -- Docker Ansible Semaphore configuration --
 DOCK_SEMA_ADMIN_USER         : 'admin'
