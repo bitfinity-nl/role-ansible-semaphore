@@ -10,9 +10,9 @@
 #  This role contains the tasks to install a
 #  Ansible Semaphore server. 
 
-- name: "Install APT packages (dependencies)"
-  apt:
-    pkg:
+#- name: "Install APT packages (dependencies)"
+#  apt:
+#    pkg:
 #    - python3-docker
 #    - python3-pip
 
