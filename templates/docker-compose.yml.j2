@@ -13,7 +13,7 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
       MYSQL_DATABASE: semaphore
       MYSQL_USER: semaphore
-      MYSQL_PASSWORD: {{ DOCK_MYSQL_PASS }}
+      MYSQL_PASSWORD: '{{ DOCK_MYSQL_PASS }}'
   semaphore:
     restart: unless-stopped
     ports:
