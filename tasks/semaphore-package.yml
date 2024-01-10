@@ -30,4 +30,9 @@
         mode: '0755',
         desc: 'Configure Systemd for Semaphore Ansible UI' }
         
-- name: ""
+- name: "Start systemd service semaphore"
+  ansible.builtin.systemd_service:
+    name: semaphore
+    state: started
+    enabled: true
+
