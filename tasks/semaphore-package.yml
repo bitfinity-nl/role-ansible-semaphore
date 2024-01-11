@@ -54,30 +54,31 @@
 - name: "Install Ansible-Semaphore via .deb binary package from the internet"
   ansible.builtin.apt:
     deb: https://github.com/ansible-semaphore/semaphore/releases/download/v{{ sem_deb_release }}/semaphore_{{ sem_deb_release }}_linux_amd64.deb
-
-
-
-
-
-
-
-
-- name: "Run semaphore setup silent"
+    
+#- name: "Run semaphore setup silent"
 
 - name: "Transfer templates"
   ansible.builtin.template:
     src: "{{ item.src: }}"
     dest: "{{ item.dest }}"
-    owner: root
-    group: root
-    mode: '0755'
+    owner: "{{ item.mode}}"
+    group: "{{ item.group }}"
+    mode: '{{ item.mode }}'
   loop:
+    - { src: 'templates/config.j2',
+        dest: '/etc/systemd/system/semaphore.service',
+        ower: 'root',
+        group: 'root',
+        mode: '0644',
+        desc: 'Configure Ansible Semaphore UI'
+        }  
     - { src: 'templates/semaphore.service.j2',
         dest: '/etc/systemd/system/semaphore.service',
         ower: 'root',
         group: 'root',
         mode: '0755',
-        desc: 'Configure Systemd for Semaphore Ansible UI' }
+        desc: 'Configure Systemd for Ansible Semaphore UI'
+        }
         
 - name: "Start systemd service semaphore"
   ansible.builtin.systemd_service:
