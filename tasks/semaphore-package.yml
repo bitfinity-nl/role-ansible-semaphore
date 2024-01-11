@@ -18,11 +18,11 @@
 - name: "Check if /opt/ansible-semaphore/semaphore_cookie_hash exist"
   stat:
     path: "/opt/ansible-semaphore/semaphore_cookie_hash"
-  register: semaphore_cookie_hash
+  register: semaphore_cookie_hash_result
   
 - name: "Generate ansible semaphore cookie hash"
   raw: "head -c32 /dev/urandom | base64 > /opt/ansible-semaphore/semaphore_cookie_hash"
-  when: semaphore_cookie_hash.stat.exists == False
+  when: semaphore_cookie_hash_result.stat.exists == False
 
 - name: "Put cookie hash in variable"
   set_fact:
@@ -31,11 +31,11 @@
 - name: "Check if /opt/ansible-semaphore/semaphore_cookie_encryption exist"
   stat:
     path: "/opt/ansible-semaphore/semaphore_cookie_encryption"
-  register: semaphore_cookie_encryption
+  register: semaphore_cookie_encryption_result
   
 - name: "Generate ansible semaphore cookie encryption"
   raw: "head -c32 /dev/urandom | base64 > /opt/ansible-semaphore/semaphore_cookie_encryption"
-  when: semaphore_cookie_encryption.stat.exists == False
+  when: semaphore_cookie_encryption_result.stat.exists == False
 
 - name: "Put cookie encryption in variable"
   set_fact:
@@ -44,11 +44,11 @@
 - name: "Check if /opt/ansible-semaphore/semaphore_encryption_key exist"
   stat:
     path: "/opt/ansible-semaphore/semaphore_encryption_key"
-  register: semaphore_encryption_key
+  register: semaphore_encryption_key_result
   
 - name: "Generate ansible semaphore encryption key"
   raw: "head -c32 /dev/urandom | base64 > /opt/ansible-semaphore/semaphore_encryption_key"
-  when: semaphore_encryption_key.stat.exists == False
+  when: semaphore_encryption_key_result.stat.exists == False
 
 - name: "Put encryption key in variable"
   set_fact:
@@ -92,7 +92,7 @@
 
 - name: "Create initial local admin for Ansible Semaphore"
   ansible.builtin.command: semaphore user add --name '{{ semui_initial_name }}' --login '{{ semui_initial_login }}' --email '{{ semui_initial_email }}' --password '{{ semui_initial_pass }}' --admin --config /opt/ansible-semaphore/config.json
-  when: semaphore_encryption_key.stat.exists == False
+  when: semaphore_encryption_key_result.stat.exists == False
   
 - name: "Start systemd service semaphore"
   ansible.builtin.systemd:
