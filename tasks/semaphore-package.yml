@@ -93,8 +93,8 @@
 - name: "Configure Ansible Semaphore for ldap"
   ansible.builtin.lineinfile:
     path: /opt/ansible-semaphore/config.json
-    regexp: '^SELINUX='
-    line: SELINUX=enforcing
+    regexp: "{{ item.find }}"
+    line: "{{ item.replace }}"
   loop:
     - { find: '^.*"ldap_binddn":', 
         replace: '        "ldap_binddn": "test"'
