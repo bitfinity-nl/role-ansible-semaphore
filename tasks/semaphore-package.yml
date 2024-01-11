@@ -75,7 +75,7 @@
     group: "{{ item.group }}"
     mode: '{{ item.mode }}'
   loop:
-    - { src: 'templates/config.json.j2',
+    - { src: 'templates/config-mysql.json.j2',
         dest: '/opt/ansible-semaphore/config.json',
         ower: 'root',
         group: 'root',
