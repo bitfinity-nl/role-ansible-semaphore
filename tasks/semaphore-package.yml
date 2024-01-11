@@ -9,9 +9,36 @@
 # Source(s):
 #   - https://computingforgeeks.com/install-semaphore-ansible-web-ui-on-ubuntu-debian/
 #
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /opt/ansible-semaphore
+    state: directory
+    mode: '0750'
+
+- name: "Check if /opt/ansible-semaphore/semaphore_encryption_key exist"
+  stat:
+    path: "/opt/ansible-semaphore/semaphore_encryption_key"
+  register: semaphore_encryption_key
+  
+- name: "Generate ansible semaphore encryption key"
+  raw: "head -c32 /dev/urandom | base64 > /opt/ansible-semaphore/semaphore_encryption_key"
+  when: semaphore_encryption_key.stat.exists == False
+
+- name: "Set correct permissions of some file(s)"
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: '{{ item.mode }}'
+  loop:
+    - { path: '/opt/ansible-semaphore/semaphore_encryption_key', owner:, 'root', group: 'root', mode: '0600' }
+
 - name: "Install Ansible-Semaphore via .deb binary package from the internet"
   ansible.builtin.apt:
-    deb: https://github.com/ansible-semaphore/semaphore/releases/download/v{{ sem_deb_release }}/semaphore_2.8.75_linux_amd64.deb
+    deb: https://github.com/ansible-semaphore/semaphore/releases/download/v{{ sem_deb_release }}/semaphore_{{ sem_deb_release }}_linux_amd64.deb
+
+
+
 
 - name: "Run semaphore setup silent"
 
