@@ -1,0 +1,4 @@
+dependencies:
+  - src: https://github.com/bitfinity-nl/role-mariadb-docker.git
+    name: role-mariadb-docker
+    version: main
