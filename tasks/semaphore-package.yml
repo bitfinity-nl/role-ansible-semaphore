@@ -96,13 +96,13 @@
     regexp: "{{ item.find }}"
     line: "{{ item.replace }}"
   loop:
-    #- { find: '^.*"ldap_enable":', replace: '\s{8}"ldap_enable": ""' }
-    - { find: '^.*"ldap_binddn":', replace: '\s{8}"ldap_binddn": "test2"' }
-    - { find: '^.*"ldap_bindpassword":', replace: '\s{8}"ldap_bindpassword": ""' }
-    - { find: '^.*"ldap_server":', replace: '\s{8}"ldap_server": ""' }
-    - { find: '^.*"ldap_searchdn":', replace: '\s{8}"ldap_searchdn": ""' }
-    - { find: '^.*"ldap_binddn":', replace: '\s{8}"ldap_binddn": ""' }
-    - { find: '^.*"ldap_searchdn":', replace: '\s{8}"ldap_searchdn": ""' }
+    #- { find: '^.*"ldap_enable":', replace: '        "ldap_enable": ""' }
+    - { find: '^.*"ldap_binddn":', replace: '        "ldap_binddn": "test2",' }
+    - { find: '^.*"ldap_bindpassword":', replace: '        "ldap_bindpassword": "",' }
+    - { find: '^.*"ldap_server":', replace: '        "ldap_server": "",' }
+    - { find: '^.*"ldap_searchdn":', replace: '        "ldap_searchdn": "",' }
+    - { find: '^.*"ldap_binddn":', replace: '        "ldap_binddn": "",' }
+    - { find: '^.*"ldap_searchdn":', replace: '        "ldap_searchdn": "",' }
 
 - name: "Create initial local admin for Ansible Semaphore"
   ansible.builtin.command: semaphore user add --name '{{ semui_initial_name }}' --login '{{ semui_initial_login }}' --email '{{ semui_initial_email }}' --password '{{ semui_initial_pass }}' --admin --config /opt/ansible-semaphore/config.json
