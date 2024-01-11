@@ -40,6 +40,10 @@
 
 
 
+
+
+
+
 - name: "Run semaphore setup silent"
 
 - name: "Transfer templates"
