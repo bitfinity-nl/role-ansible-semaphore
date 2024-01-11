@@ -15,6 +15,24 @@
     state: directory
     mode: '0750'
 
+- name: "Check if /opt/ansible-semaphore/semaphore_cookie_hash exist"
+  stat:
+    path: "/opt/ansible-semaphore/semaphore_cookie_hash"
+  register: semaphore_cookie_hash
+  
+- name: "Generate ansible semaphore cookie hash"
+  raw: "head -c32 /dev/urandom | base64 > /opt/ansible-semaphore/semaphore_cookie_hash"
+  when: semaphore_cookie_hash.stat.exists == False
+
+- name: "Check if /opt/ansible-semaphore/semaphore_cookie_encryption exist"
+  stat:
+    path: "/opt/ansible-semaphore/semaphore_cookie_encryption"
+  register: semaphore_cookie_encryption
+  
+- name: "Generate ansible semaphore cookie encryption"
+  raw: "head -c32 /dev/urandom | base64 > /opt/ansible-semaphore/semaphore_cookie_encryption"
+  when: semaphore_cookie_encryption.stat.exists == False
+  
 - name: "Check if /opt/ansible-semaphore/semaphore_encryption_key exist"
   stat:
     path: "/opt/ansible-semaphore/semaphore_encryption_key"
