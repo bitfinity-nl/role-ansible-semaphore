@@ -92,9 +92,9 @@
         desc: 'Configure Systemd for Ansible Semaphore UI'
         }
         
-- name: "Start systemd service semaphore"
-  ansible.builtin.systemd_service:
-    name: semaphore
-    state: started
-    enabled: true
+#- name: "Start systemd service semaphore"
+#  ansible.builtin.systemd_service:
+#    name: semaphore
+#    state: started
+#    enabled: true
 
