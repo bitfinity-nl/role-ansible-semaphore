@@ -26,6 +26,14 @@ semui_db_name           : 'semaphore'
 semui_db_user           : 'semaphore'
 semui_db_pass           : 'semaphore'
 
+# LDAP
+semui_ldap_enable       : 'false'
+semui_ldap_binddn       : ''
+semui_ldap_bindpassword : ''
+smeui_ldap_server       : 'dc01.local.example.com'
+semui_ldap_searchdn     : 'dc=local,dc=example,dc=com'
+semui_ldap_searchfilter : ''
+semui_ldap_needtls      : 'no'
 
 
 # -- Docker tasks --
