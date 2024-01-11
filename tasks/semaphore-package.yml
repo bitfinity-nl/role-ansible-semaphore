@@ -24,6 +24,10 @@
   raw: "head -c32 /dev/urandom | base64 > /opt/ansible-semaphore/semaphore_cookie_hash"
   when: semaphore_cookie_hash.stat.exists == False
 
+- name: "Put cookie hash in variable"
+  set_fact:
+    semaphore_encryption_key: "{{ lookup('file','/opt/ansible-semaphore/semaphore_cookie_hash') }}"  
+    
 - name: "Check if /opt/ansible-semaphore/semaphore_cookie_encryption exist"
   stat:
     path: "/opt/ansible-semaphore/semaphore_cookie_encryption"
@@ -32,7 +36,11 @@
 - name: "Generate ansible semaphore cookie encryption"
   raw: "head -c32 /dev/urandom | base64 > /opt/ansible-semaphore/semaphore_cookie_encryption"
   when: semaphore_cookie_encryption.stat.exists == False
-  
+
+- name: "Put cookie encryption in variable"
+  set_fact:
+    semaphore_encryption_key: "{{ lookup('file','/opt/ansible-semaphore/semaphore_cookie_encryption') }}"  
+ 
 - name: "Check if /opt/ansible-semaphore/semaphore_encryption_key exist"
   stat:
     path: "/opt/ansible-semaphore/semaphore_encryption_key"
@@ -41,6 +49,10 @@
 - name: "Generate ansible semaphore encryption key"
   raw: "head -c32 /dev/urandom | base64 > /opt/ansible-semaphore/semaphore_encryption_key"
   when: semaphore_encryption_key.stat.exists == False
+
+- name: "Put encryption key in variable"
+  set_fact:
+    semaphore_encryption_key: "{{ lookup('file','/opt/ansible-semaphore/semaphore_encryption_key') }}"  
 
 - name: "Set correct permissions of some file(s)"
   ansible.builtin.file:
