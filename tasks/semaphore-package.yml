@@ -65,7 +65,7 @@
 
 - name: "Install Ansible-Semaphore via .deb binary package from the internet"
   ansible.builtin.apt:
-    deb: https://github.com/ansible-semaphore/semaphore/releases/download/v{{ sem_deb_release }}/semaphore_{{ sem_deb_release }}_linux_amd64.deb
+    deb: https://github.com/ansible-semaphore/semaphore/releases/download/v{{ SEMUI_DEB_RELEASE }}/semaphore_{{ SEMUI_DEB_RELEASE }}_linux_amd64.deb
     
 #- name: "Run semaphore setup silent"
 
