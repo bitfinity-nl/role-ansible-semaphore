@@ -20,6 +20,13 @@ semui_initial_login     : 'admin'
 semui_initial_email     : 'admin@example.com'
 semui_initial_pass      : 'admin'
 
+# MaridDB
+semui_db_type           : 'mariadb'
+semui_db_name           : 'semaphore'
+semui_db_user           : 'semaphore'
+semui_db_pass           : 'semaphore'
+
+
 
 # -- Docker tasks --
 SEMA_SETUP_ANSIBLE_CORE      : 'false'
