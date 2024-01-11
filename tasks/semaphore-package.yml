@@ -96,7 +96,9 @@
     regexp: '^SELINUX='
     line: SELINUX=enforcing
   loop:
-    - { find: '^.*"ldap_binddn":', replace: '        "ldap_binddn": "test"' }
+    - { find: '^.*"ldap_binddn":', 
+        replace: '        "ldap_binddn": "test"'
+        }
 
 - name: "Create initial local admin for Ansible Semaphore"
   ansible.builtin.command: semaphore user add --name '{{ semui_initial_name }}' --login '{{ semui_initial_login }}' --email '{{ semui_initial_email }}' --password '{{ semui_initial_pass }}' --admin --config /opt/ansible-semaphore/config.json
