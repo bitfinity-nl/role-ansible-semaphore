@@ -26,7 +26,7 @@
 
 - name: "Put cookie hash in variable"
   set_fact:
-    semaphore_encryption_key: "{{ lookup('file','/opt/ansible-semaphore/semaphore_cookie_hash') }}"  
+    semaphore_cookie_hash: "{{ lookup('file','/opt/ansible-semaphore/semaphore_cookie_hash') }}"  
     
 - name: "Check if /opt/ansible-semaphore/semaphore_cookie_encryption exist"
   stat:
@@ -39,7 +39,7 @@
 
 - name: "Put cookie encryption in variable"
   set_fact:
-    semaphore_encryption_key: "{{ lookup('file','/opt/ansible-semaphore/semaphore_cookie_encryption') }}"  
+    semaphore_cookie_encryption: "{{ lookup('file','/opt/ansible-semaphore/semaphore_cookie_encryption') }}"  
  
 - name: "Check if /opt/ansible-semaphore/semaphore_encryption_key exist"
   stat:
