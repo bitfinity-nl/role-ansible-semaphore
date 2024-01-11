@@ -10,6 +10,10 @@
 #  This role contains the tasks to install a
 #  Ansible Semaphore server. 
 #
+# -- Version --
+#  - https://github.com/ansible-semaphore/semaphore/releases
+SEMUI_DEB_RELEASE            : '2.9.37' 
+
 # -- Docker tasks --
 SEMA_SETUP_ANSIBLE_CORE      : 'false'
 SEMA_SETUP_ANSIBLE_SEMAPHORE : 'true'
