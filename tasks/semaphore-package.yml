@@ -65,11 +65,9 @@
 
 - name: "Install Ansible-Semaphore via .deb binary package from the internet"
   ansible.builtin.apt:
-    deb: "https://github.com/ansible-semaphore/semaphore/releases/download/v{{ SEMUI_DEB_RELEASE }}/semaphore_{{ SEMUI_DEB_RELEASE }}_linux_amd64.deb"
-    
-#- name: "Run semaphore setup silent"
+    deb: "https://github.com/ansible-semaphore/semaphore/releases/download/v{{ semui_deb_release }}/semaphore_{{ semui_deb_release }}_linux_amd64.deb"
 
-- name: "Transfer templates"
+- name: "Configure Ansible Semaphore by Transfering templates"
   ansible.builtin.template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
@@ -91,10 +89,14 @@
         mode: '0755',
         desc: 'Configure Systemd for Ansible Semaphore UI'
         }
-        
-#- name: "Start systemd service semaphore"
-#  ansible.builtin.systemd_service:
-#    name: semaphore
-#    state: started
-#    enabled: true
 
+- name: "Create initial local admin for Ansible Semaphore"
+  ansible.builtin.command: "semaphore user add --name {{ semui_initial_name }} --login {{ semui_initial_login }} --email {{ semui_initial_email }} --password {{ semui_initial_pass }} --admin --config /opt/ansible-semaphore/config.json"
+  when: semaphore_encryption_key.stat.exists == False
+  
+- name: "Start systemd service semaphore"
+  ansible.builtin.systemd_service:
+    name: semaphore
+    state: started
+    enabled: true
+  notify:
