@@ -91,7 +91,7 @@
         }
 
 - name: "Create initial local admin for Ansible Semaphore"
-  ansible.builtin.command: "semaphore user add --name {{ semui_initial_name }} --login {{ semui_initial_login }} --email {{ semui_initial_email }} --password {{ semui_initial_pass }} --admin --config /opt/ansible-semaphore/config.json"
+  ansible.builtin.command: semaphore user add --name '{{ semui_initial_name }}' --login '{{ semui_initial_login }}' --email '{{ semui_initial_email }}' --password '{{ semui_initial_pass }}' --admin --config /opt/ansible-semaphore/config.json
   when: semaphore_encryption_key.stat.exists == False
   
 - name: "Start systemd service semaphore"
