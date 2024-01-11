@@ -11,8 +11,15 @@
 #  Ansible Semaphore server. 
 #
 # -- Version --
+#
 #  - https://github.com/ansible-semaphore/semaphore/releases
-SEMUI_DEB_RELEASE            : '2.9.37' 
+semui_deb_release       : '2.9.37' 
+
+semui_initial_name      : 'admin'
+semui_initial_login     : 'admin'
+semui_initial_email     : 'admin@example.com'
+semui_initial_pass      : 'admin'
+
 
 # -- Docker tasks --
 SEMA_SETUP_ANSIBLE_CORE      : 'false'
