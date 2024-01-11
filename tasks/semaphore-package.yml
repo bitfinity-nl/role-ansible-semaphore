@@ -95,8 +95,7 @@
   when: semaphore_encryption_key.stat.exists == False
   
 - name: "Start systemd service semaphore"
-  ansible.builtin.systemd_service:
+  ansible.builtin.systemd:
     name: semaphore
     state: started
     enabled: true
-  notify:
