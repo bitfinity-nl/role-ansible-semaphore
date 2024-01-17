@@ -1,0 +1,42 @@
+<VirtualHost *:80>
+
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+</VirtualHost>
+
+<IfModule mod_ssl.c>
+
+<VirtualHost *:443>
+
+  ServerName {{ item.apache2_servername }}
+  ServerAdmin {{ item.apache2_serveradmin }}
+  
+  ProxyPreserveHost On
+
+  ServerSignature Off
+  SSLEngine On
+  SSLCertificateFile    {{ item.cert_fullchain }}
+  SSLCertificateKeyFile {{ item.cert_private_key }}
+
+  # -- Ansible Semaphore UI --
+  ProxyPass / {{ item.apache2_proxy_pass }}
+  ProxyPassReverse / {{ item.apache2_proxy_rev_pass }}
+
+  <Location /api/ws>
+     RewriteEngine On
+     RewriteCond %{QUERY_STRING} transport=websocket [NC]
+     RewriteCond %{HTTP:Upgrade} websocket [NC]
+     RewriteCond %{HTTP:Connection} upgrade [NC]
+     RewriteRule /(.*) ws://localhost:3000/api/ws/$1 [P,L]
+     ProxyPass ws://localhost:3000/api/ws retry=0 timeout=30
+     ProxyPassReverse ws://localhost:3000/api/ws
+  </Location> 
+
+  ErrorLog ${APACHE_LOG_DIR}/{{ item.name }}-error.log
+  CustomLog ${APACHE_LOG_DIR}/{{ item.name }}-access.log combined
+
+</VirtualHost>
+
+</IfModule>
