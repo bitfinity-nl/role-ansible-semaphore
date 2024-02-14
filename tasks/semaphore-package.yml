@@ -97,17 +97,17 @@
     line: "{{ item.replace }}"
     backup: true
   loop:
-    - { find: '^.*"ldap_enable":', replace: '        "ldap_enable": "{{ semui_ldap_enable }}"' }
+    - { find: '^.*"ldap_enable":', replace: '        "ldap_enable": {{ semui_ldap_enable }},' }
     - { find: '^.*"ldap_binddn":', replace: '        "ldap_binddn": "{{ semui_ldap_binddn }}",' }
     - { find: '^.*"ldap_bindpassword":', replace: '        "ldap_bindpassword": "{{ semui_ldap_bindpassword }}",' }
     - { find: '^.*"ldap_server":', replace: '        "ldap_server": "{{ smeui_ldap_server }}",' }
     - { find: '^.*"ldap_searchdn":', replace: '        "ldap_searchdn": "{{ semui_ldap_searchdn }}",' }
     - { find: '^.*"ldap_searchfilter":', replace: '        "ldap_searchfilter": "{{ semui_ldap_searchfilter }}",' }
-    - { find: '^.*"ldap_needtls":', replace: '        "ldap_needtls": "{{ semui_ldap_needtls }}",' }
     - { find: '^.*"dn":', replace: '                "dn": "{{ semui_ldap_dn_mapping }}",' }
     - { find: '^.*"mail":', replace: '                "mail": "{{ semui_ldap_mail_mapping }}",' }
     - { find: '^.*"uid":', replace: '                "uid": "{{ semui_ldap_uid_mapping }}",' }    
     - { find: '^.*"cn":', replace: '                "cn": "{{ semui_ldap_cn_mapping }}"' }
+    - { find: '^.*"ldap_needtls":', replace: '        "ldap_needtls": {{ semui_ldap_needtls }},' }
   when: semui_ldap_enable == 'true'
    
 - name: "Create initial local admin for Ansible Semaphore"
