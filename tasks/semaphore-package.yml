@@ -104,6 +104,10 @@
     - { find: '^.*"ldap_searchdn":', replace: '        "ldap_searchdn": "{{ semui_ldap_searchdn }}",' }
     - { find: '^.*"ldap_searchfilter":', replace: '        "ldap_searchfilter": "{{ semui_ldap_searchfilter }}",' }
     - { find: '^.*"ldap_needtls":', replace: '        "ldap_needtls": "{{ semui_ldap_needtls }}",' }
+    - { find: '^.*"dn":', replace: '                "ldap_needtls": "{{ semui_ldap_dn_mapping }}",' }
+    - { find: '^.*"mail":', replace: '                "ldap_needtls": "{{ semui_ldap_mail_mapping }}",' }
+    - { find: '^.*"uid":', replace: '                "ldap_needtls": "{{ semui_ldap_uid_mapping }}",' }    
+    - { find: '^.*"cn":', replace: '                "ldap_needtls": "{{ semui_ldap_cn_mapping }}"' }
   when: semui_ldap_enable == 'true'
    
 - name: "Create initial local admin for Ansible Semaphore"
