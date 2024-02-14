@@ -95,7 +95,7 @@
     path: /opt/ansible-semaphore/config.json
     regexp: "{{ item.find }}"
     line: "{{ item.replace }}"
-    backup: true
+    # backup: true
   loop:
     - { find: '^.*"ldap_enable":', replace: '        "ldap_enable": {{ semui_ldap_enable }},' }
     - { find: '^.*"ldap_binddn":', replace: '        "ldap_binddn": "{{ semui_ldap_binddn }}",' }
