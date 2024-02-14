@@ -34,7 +34,10 @@ smeui_ldap_server       : 'dc01.local.example.com'
 semui_ldap_searchdn     : 'dc=local,dc=example,dc=com'
 semui_ldap_searchfilter : ''
 semui_ldap_needtls      : 'no'
-
+semui_ldap_dn_mapping   : 'dn'
+semui_ldap_mail_mapping : 'mail'
+semui_ldap_uid_mapping  : 'sAMAccountName'
+semui_ldap_cn_mapping   : 'cn'
 
 # -- Docker tasks --
 SEMA_SETUP_ANSIBLE_CORE      : 'false'
