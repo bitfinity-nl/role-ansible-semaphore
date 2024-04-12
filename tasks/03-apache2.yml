@@ -39,7 +39,7 @@
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
   loop:
-    - { src: 'templates/apache2/apache2.conf.j2', dest: '/etc/apache2/sites-available/semui.conf' }
+    - { src: 'templates/apache2/apache2-semaphore.conf.j2', dest: '/etc/apache2/sites-available/semui.conf' }
 
 - name: "Disable default Apache2 sites"
   ansible.builtin.command: "a2dissite {{ item }}"
