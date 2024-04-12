@@ -20,6 +20,9 @@ semui_setup_ansible_core      : 'false'
 semui_setup_ansible_semaphore : 'true'
 semui_setup_apache2_for_semui : 'false'
 
+# -- Ansible --
+semui_ansible_vault_pass      : 'changeme'
+
 # -- Semui --
 semui_deb_release             : '2.9.45' 
 # Initial login
