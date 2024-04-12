@@ -29,22 +29,22 @@ semui_db_pass              : 'semaphore'
 # -- Apache2 Semaphore configuration --
 semui_apache2_servername   : 'semui.example.com'
 semui_apache2_serveradmin  : 'admin@example.com'
-semui_apache2_cert_file    : ''
-semui_apache2_cert_keyfile : ''
+semui_apache2_cert_file    : '/etc/letsencrypt/live/example.com/fullchain.pem'
+semui_apache2_cert_keyfile : '/etc/letsencrypt/live/example.com/privkey.pem'
 
 # LDAP
-semui_ldap_enable       : 'false'
-semui_ldap_binddn       : ''
-semui_ldap_bindpassword : ''
-smeui_ldap_server       : 'dc01.local.example.com'
-semui_ldap_searchdn     : 'dc=local,dc=example,dc=com'
-semui_ldap_searchfilter : '(&(objectCategory=Person)(sAMAccountName=%s))'
+semui_ldap_enable          : 'false'
+semui_ldap_binddn          : ''
+semui_ldap_bindpassword    : ''
+smeui_ldap_server          : 'dc01.local.example.com'
+semui_ldap_searchdn        : 'dc=local,dc=example,dc=com'
+semui_ldap_searchfilter    : '(&(objectCategory=Person)(sAMAccountName=%s))'
 # semui_ldap_searchfilter : '(\u0026(sAMAccountName=%s)(memberof=CN=app_ansible_semaphore,OU=Applications,OU=Resources,OU=example,DC=example,DC=local))'
-semui_ldap_needtls      : 'false'
-semui_ldap_dn_mapping   : 'dn'
-semui_ldap_mail_mapping : 'mail'
-semui_ldap_uid_mapping  : 'sAMAccountName'
-semui_ldap_cn_mapping   : 'cn'
+semui_ldap_needtls         : 'false'
+semui_ldap_dn_mapping      : 'dn'
+semui_ldap_mail_mapping    : 'mail'
+semui_ldap_uid_mapping     : 'sAMAccountName'
+semui_ldap_cn_mapping      : 'cn'
 
 # -- Docker tasks --
 SEMA_SETUP_ANSIBLE_CORE      : 'false'
@@ -53,18 +53,5 @@ SEMA_SETUP_ANSIBLE_APACHE    : 'false'
 
 # -- Docker MySQL configuration --
 DOCK_MYSQL_PASS              : 'semaphore'
-
-# -- Docker Ansible Semaphore configuration --
-#DOCK_SEMA_ADMIN_USER         : 'admin'
-#DOCK_SEMA_ADMIN_PASS         : 'admin'
-#DOCK_SEMA_ADMIN_EMAIL        : 'admin@example.com'
-#DOCK_SEMA_LDAP_ACTIVATED     : 'no'
-#DOCK_SEMA_LDAP_HOST          : 'dc01.local.example.com'
-#DOCK_SEMA_LDAP_PORT          : '636'
-#DOCK_SEMA_NEED_TLS           : 'yes'
-#DOCK_SEMA_LDAP_DN_BIND       : 'id=bind_user,cn=users,cn=accounts,dc=local,dc=shiftsystems,dc=net'
-#DOCK_SEMA_LDAP_PASSWORD      : 'ldap_bind_account_password'
-#DOCK_SEMA_LDAP_DN_SEARCH     : 'dc=local,dc=example,dc=com'
-#DOCK_SEMA_LDAP_SEARCH_FILTER : '(\u0026(uid=%s)(memberOf=cn=ipausers,cn=groups,cn=accounts,dc=local,dc=example,dc=com))'
 
 
