@@ -10,15 +10,15 @@
 
 <VirtualHost *:443>
 
-  ServerName {{ item.apache2_servername }}
-  ServerAdmin {{ item.apache2_serveradmin }}
+  ServerName {{ semui_apache2_servername }}
+  ServerAdmin {{ semui_apache2_serveradmin }}
   
   ProxyPreserveHost On
 
   ServerSignature Off
   SSLEngine On
-  SSLCertificateFile    {{ item.cert_fullchain }}
-  SSLCertificateKeyFile {{ item.cert_private_key }}
+  SSLCertificateFile    {{ semui_apache2_cert_file }}
+  SSLCertificateKeyFile {{ semui_apache2_cert_keyfile }}
 
   # -- Ansible Semaphore UI --
   ProxyPass / {{ item.apache2_proxy_pass }}
