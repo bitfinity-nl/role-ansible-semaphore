@@ -14,46 +14,43 @@
 #
 #  - https://github.com/ansible-semaphore/semaphore/releases
 
-# Semui
-semui_semui_setup_semaphore : 'true'
-semui_deb_release           : '2.9.45' 
-# Initial login
-semui_initial_name          : 'admin'
-semui_initial_login         : 'admin'
-semui_initial_email         : 'admin@example.com'
-semui_initial_pass          : 'admin'
+# -- Check which tasks must be installed --
+# Select which components must be installed.
+semui_setup_ansible_core      : 'false'
+semui_setup_ansible_semaphore : 'true'
+semui_setup_apache2_for_semui : 'false'
 
-# MaridDB
-semui_db_type              : 'mariadb'
-semui_db_name              : 'semaphore'
-semui_db_user              : 'semaphore'
-semui_db_pass              : 'semaphore'
+# -- Semui --
+semui_deb_release             : '2.9.45' 
+# Initial login
+semui_initial_name            : 'admin'
+semui_initial_login           : 'admin'
+semui_initial_email           : 'admin@example.com'
+semui_initial_pass            : 'admin'
+
+# -- MaridDB --
+# MariaDB must be installed.
+semui_db_type                 : 'mariadb'
+semui_db_name                 : 'semaphore'
+semui_db_user                 : 'semaphore'
+semui_db_pass                 : 'semaphore'
+
+# -- LDAP -- 
+semui_ldap_enable             : 'false'
+semui_ldap_binddn             : ''
+semui_ldap_bindpassword       : ''
+smeui_ldap_server             : 'dc01.local.example.com'
+semui_ldap_searchdn           : 'dc=local,dc=example,dc=com'
+semui_ldap_searchfilter       : '(&(objectCategory=Person)(sAMAccountName=%s))'
+# semui_ldap_searchfilter : '(\u0026(sAMAccountName=%s)(memberof=CN=app_ansible_semaphore,OU=Applications,OU=Resources,OU=example,DC=example,DC=local))'
+semui_ldap_needtls            : 'false'
+semui_ldap_dn_mapping         : 'dn'
+semui_ldap_mail_mapping       : 'mail'
+semui_ldap_uid_mapping        : 'sAMAccountName'
+semui_ldap_cn_mapping         : 'cn'
 
 # -- Apache2 Semaphore configuration --
-semui_apache2_setup_apache : 'false'
-semui_apache2_servername   : 'semui.example.com'
-semui_apache2_serveradmin  : 'admin@example.com'
-semui_apache2_cert_file    : '/etc/letsencrypt/live/example.com/fullchain.pem'
-semui_apache2_cert_keyfile : '/etc/letsencrypt/live/example.com/privkey.pem'
-
-# LDAP
-semui_ldap_enable          : 'false'
-semui_ldap_binddn          : ''
-semui_ldap_bindpassword    : ''
-smeui_ldap_server          : 'dc01.local.example.com'
-semui_ldap_searchdn        : 'dc=local,dc=example,dc=com'
-semui_ldap_searchfilter    : '(&(objectCategory=Person)(sAMAccountName=%s))'
-# semui_ldap_searchfilter : '(\u0026(sAMAccountName=%s)(memberof=CN=app_ansible_semaphore,OU=Applications,OU=Resources,OU=example,DC=example,DC=local))'
-semui_ldap_needtls         : 'false'
-semui_ldap_dn_mapping      : 'dn'
-semui_ldap_mail_mapping    : 'mail'
-semui_ldap_uid_mapping     : 'sAMAccountName'
-semui_ldap_cn_mapping      : 'cn'
-
-# -- Docker tasks --
-SEMA_SETUP_ANSIBLE_CORE      : 'false'
-
-# -- Docker MySQL configuration --
-DOCK_MYSQL_PASS              : 'semaphore'
-
-
+semui_apache2_servername      : 'semui.example.com'
+semui_apache2_serveradmin     : 'admin@example.com'
+semui_apache2_cert_file       : '/etc/letsencrypt/live/example.com/fullchain.pem'
+semui_apache2_cert_keyfile    : '/etc/letsencrypt/live/example.com/privkey.pem'
