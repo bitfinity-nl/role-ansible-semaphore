@@ -13,12 +13,15 @@
 # -- Version --
 #
 #  - https://github.com/ansible-semaphore/semaphore/releases
-semui_deb_release          : '2.9.45' 
 
-semui_initial_name         : 'admin'
-semui_initial_login        : 'admin'
-semui_initial_email        : 'admin@example.com'
-semui_initial_pass         : 'admin'
+# Semui
+semui_semui_setup_semaphore : 'true'
+semui_deb_release           : '2.9.45' 
+# Initial login
+semui_initial_name          : 'admin'
+semui_initial_login         : 'admin'
+semui_initial_email         : 'admin@example.com'
+semui_initial_pass          : 'admin'
 
 # MaridDB
 semui_db_type              : 'mariadb'
@@ -49,8 +52,6 @@ semui_ldap_cn_mapping      : 'cn'
 
 # -- Docker tasks --
 SEMA_SETUP_ANSIBLE_CORE      : 'false'
-SEMA_SETUP_ANSIBLE_SEMAPHORE : 'true'
-
 
 # -- Docker MySQL configuration --
 DOCK_MYSQL_PASS              : 'semaphore'
