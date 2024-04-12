@@ -10,17 +10,17 @@
 #  This role contains the tasks to install a
 #  Ansible Semaphore server. 
 #
-#- name: "Include tasks/01-ansible.yml"
-#  include_tasks: tasks/01-ansible.yml
-#  when: SEMA_SETUP_ANSIBLE_CORE == 'true' 
+- name: "Include tasks/01-ansible.yml"
+  include_tasks: tasks/01-ansible.yml
+  when: semui_setup_ansible_core == 'false' 
 
 - name: "Include tasks/semaphore-package.yml"
   include_tasks: tasks/semaphore-package.yml
-  when: semui_semui_setup_semaphore == 'true'
+  when: semui_setup_ansible_semaphore == 'true'
 
 - name: "Include tasks/02-apache2.yml"
   include_tasks: tasks/03-apache2.yml
-  when: semui_apache2_setup_apache == 'true'
+  when: semui_setup_apache2_for_semui == 'true'
 
 
 
