@@ -35,7 +35,7 @@
     mode: 0775
 
 - name: "Transfer templates"
-  ansible.builtin.template::
+  ansible.builtin.template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
   loop:
