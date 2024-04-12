@@ -13,7 +13,7 @@
 # -- Version --
 #
 #  - https://github.com/ansible-semaphore/semaphore/releases
-semui_deb_release       : '2.9.45' 
+semui_deb_release          : '2.9.45' 
 
 semui_initial_name         : 'admin'
 semui_initial_login        : 'admin'
