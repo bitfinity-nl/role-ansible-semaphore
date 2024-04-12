@@ -21,8 +21,8 @@
   SSLCertificateKeyFile {{ semui_apache2_cert_keyfile }}
 
   # -- Ansible Semaphore UI --
-  ProxyPass / {{ item.apache2_proxy_pass }}
-  ProxyPassReverse / {{ item.apache2_proxy_rev_pass }}
+  ProxyPass / http://localhost:3000/
+  ProxyPassReverse / http://localhost:3000/
 
   <Location /api/ws>
      RewriteEngine On
