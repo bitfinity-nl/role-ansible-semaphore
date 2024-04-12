@@ -36,7 +36,7 @@
 - name: "Ensure file /home/ansible/.ansible-vault exists and set correct file permissions"
   ansible.builtin.lineinfile:
     path: /etc/.ansible-vault
-    line: "{{ ansible_vault_pass }}"
+    line: "{{ semui_ansible_vault_pass }}"
     owner: root
     group: ansible
     mode: 0640
