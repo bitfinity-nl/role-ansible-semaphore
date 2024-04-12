@@ -20,7 +20,7 @@
 
 - name: "Include tasks/02-apache2.yml"
   include_tasks: tasks/03-apache2.yml
-  when: semui_apache2_setup_apache : 'true'
+  when: semui_apache2_setup_apache == 'true'
 
 
 
