@@ -27,6 +27,7 @@ semui_db_user              : 'semaphore'
 semui_db_pass              : 'semaphore'
 
 # -- Apache2 Semaphore configuration --
+semui_apache2_setup_apache : 'false'
 semui_apache2_servername   : 'semui.example.com'
 semui_apache2_serveradmin  : 'admin@example.com'
 semui_apache2_cert_file    : '/etc/letsencrypt/live/example.com/fullchain.pem'
@@ -49,7 +50,7 @@ semui_ldap_cn_mapping      : 'cn'
 # -- Docker tasks --
 SEMA_SETUP_ANSIBLE_CORE      : 'false'
 SEMA_SETUP_ANSIBLE_SEMAPHORE : 'true'
-SEMA_SETUP_ANSIBLE_APACHE    : 'false'
+
 
 # -- Docker MySQL configuration --
 DOCK_MYSQL_PASS              : 'semaphore'
