@@ -77,14 +77,14 @@
   loop:
     - { src: 'templates/config-mysql.json.j2',
         dest: '/opt/ansible-semaphore/config.json',
-        ower: 'root',
+        owner: 'root',
         group: 'root',
         mode: '0644',
         desc: 'Configure Ansible Semaphore UI'
         }  
     - { src: 'templates/semaphore.service.j2',
         dest: '/etc/systemd/system/semaphore.service',
-        ower: 'root',
+        owner: 'root',
         group: 'root',
         mode: '0755',
         desc: 'Configure Systemd for Ansible Semaphore UI'
