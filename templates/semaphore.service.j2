@@ -6,8 +6,8 @@ After=network-online.target
 
 [Service]
 Type=simple
-User=ansible
-Group=ansible
+#User=ansible
+#Group=ansible
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/usr/bin/semaphore server --config /opt/ansible-semaphore/config.json
 SyslogIdentifier=semaphore
