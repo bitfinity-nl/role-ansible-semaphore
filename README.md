@@ -13,3 +13,5 @@ wget https://github.com/semaphoreui/semaphore/releases/download/v2.10.22/semapho
 systemctl stop semaphore ; systemctl status semaphore
 dpkg -i
 systemctl start semaphore ; systemctl status semaphore
+
+v
