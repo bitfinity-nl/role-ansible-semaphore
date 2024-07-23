@@ -11,7 +11,7 @@
 #  Ansible Semaphore server. 
 #
 - name: "Include tasks/01-ansible.yml"
-  include_tasks: tasks/01-ansible.yml
+  include_tasks: tasks/01-ansible-core.yml
   when: semui_setup_ansible_core == 'false' 
 
 - name: "Include tasks/semaphore-package.yml"
